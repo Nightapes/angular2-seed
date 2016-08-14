@@ -1,2 +1,7 @@
 <h1>Angular 2 Seed</h1>
-<more></more>
+<more class="dropdown">
+    <div class="dropdown-content">
+        <a *ngIf="!isLoggedIn()" [routerLink]="['/login']">Login</a>
+        <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+    </div>
+</more>
