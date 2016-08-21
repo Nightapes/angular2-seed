@@ -31,7 +31,6 @@ more {
 /* Dropdown Content (Hidden by Default) */
 
 .dropdown-content {
-  display: none;
   margin-top: 24px;
   position: absolute;
   background-color: #f9f9f9;

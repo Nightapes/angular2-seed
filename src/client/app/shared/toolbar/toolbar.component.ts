@@ -12,13 +12,20 @@ import { AuthService } from '../../secure/index';
 })
 
 export class ToolbarComponent {
+
+  private isOpen: boolean = false;
+
   constructor(private authService: AuthService) { }
 
   isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
+    return this.authService.isLoggedIn(undefined);
   }
 
   logout() {
     this.authService.logout();
+  }
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
   }
 }

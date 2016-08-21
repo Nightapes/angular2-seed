@@ -1,6 +1,7 @@
 <h2>LOGIN</h2>
 <p>{{message}}</p>
 <p>
-    <button (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
-    <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+    <button (click)="login()" *ngIf="!authService.hasRoleUser">Login</button>
+    <button (click)="loginAdmin()" *ngIf="!authService.hasRoleAdmin">Login Admin</button>
+    <button (click)="logout()" *ngIf="authService.hasRoleUser || authService.hasRoleAdmin">Logout</button>
 </p>

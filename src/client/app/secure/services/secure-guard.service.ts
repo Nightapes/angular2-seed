@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot,
-         RouterStateSnapshot } from '@angular/router';
+    RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from './auth.service';
 
@@ -11,7 +11,14 @@ export class SecureGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-        if (this.authService.isLoggedIn) { return true; }
+        let roles: any = route.data['roles'];
+
+        if (!roles && roles.length === 0) {
+            return true;
+        } else {
+            if (this.authService.isLoggedIn(roles)) { return true; }
+        }
+
 
         // Store the attempted URL for redirecting
         this.authService.redirectUrl = state.url;
